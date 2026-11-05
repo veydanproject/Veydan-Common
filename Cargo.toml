@@ -1,0 +1,46 @@
+# Veydan Common: the crates the services of the network and the app share.
+#
+#   veydan-node      who a node is: its id, pinned TLS, h2 streams, signing,
+#                    the signed lists a registry hands out
+#   veydan-denied    the keys and groups denied on every server of the network
+#   registry-proto   what bridges and call nodes say to the registry, and
+#                    the lists it signs for the clients
+#
+# A library and nothing else: no binary, no release files; the tag of a
+# version is its release. The services that build on it (link, hub, call,
+# push, guard, cloud) take these crates by path in the monorepo and by the
+# tag of Veydan-Common in their own repositories.
+#
+# Self-contained on purpose: no path dependency leaves this folder, so the
+# whole thing moves to its own repository by moving the folder.
+[workspace]
+resolver = "2"
+members = ["crates/veydan-node", "crates/veydan-denied", "crates/registry-proto"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+# The newest thing used: `is_multiple_of` (1.87)
+rust-version = "1.87"
+publish = false
+authors = ["Veydan Project"]
+# PolyForm Perimeter 1.0.1, as the whole project: LICENSE is a copy of the
+# monorepo's, here because this folder becomes the root of a repository.
+license-file = "LICENSE"
+
+[workspace.dependencies]
+veydan-node = { path = "crates/veydan-node" }
+veydan-denied = { path = "crates/veydan-denied" }
+registry-proto = { path = "crates/registry-proto" }
+
+bytes = "1"
+h2 = "0.4"
+http = "1"
+ring = "0.17"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+# The X.509 parser rustls itself uses, named here for the key a certificate carries.
+webpki = { package = "rustls-webpki", version = "0.103", default-features = false, features = ["ring", "std"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "sync", "time", "io-util"] }

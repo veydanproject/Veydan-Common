@@ -1,0 +1,18 @@
+[package]
+name = "registry-proto"
+description = "What bridges and call nodes say to the registry of the Veydan network, and the signed lists it hands out"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+authors.workspace = true
+license-file.workspace = true
+
+[dependencies]
+veydan-node = { workspace = true }
+ring = { workspace = true }
+rustls = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+webpki = { workspace = true }

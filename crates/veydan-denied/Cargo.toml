@@ -1,0 +1,12 @@
+[package]
+name = "veydan-denied"
+description = "The keys and the groups denied on every server of the Veydan network: the files vcloud lays, and the reader every server uses"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+authors.workspace = true
+license-file.workspace = true
+
+# Only std: a client of this crate pulls in nothing of the servers.
+[dependencies]

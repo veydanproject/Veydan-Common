@@ -1,0 +1,9 @@
+{
+  "list": "{\"v\":2,\"kind\":\"call\",\"complete\":false,\"issued_at\":1790000000,\"expires_at\":1900000000,\"nodes\":[{\"ref\":\"203.0.113.7:8443#ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb\",\"turn_port\":3478,\"sfu_port\":3479,\"region\":\"eu\",\"caps\":[\"stun\",\"cascade\"],\"class\":\"volunteer\",\"state\":\"active\",\"load\":0.03},{\"ref\":\"203.0.113.7:8443#3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d\",\"turn_port\":3478,\"sfu_port\":0,\"caps\":[\"stun\",\"turn\"],\"class\":\"volunteer\",\"state\":\"degraded\",\"load\":0.5}]}",
+  "sig": "3b975f7d1f64758f67dc9c8fd2825968352e25c49684b919c072706c6c00f32e3db4c69da28e0f3a0a091dbb92fd2748c9971408daaa9ed3a970e3a2defa090b",
+  "delegation": {
+    "key": "06d944b43156c3826034bf2d40ac19fe0744cae4dd269f0975f13643ed839706",
+    "expires_at": 1950000000,
+    "sig": "f402421d49435ab80d723283136e10527836c7764d63b0a00b1b5d9e5a042281c06c29e79db7422a1b2763bc27dce42de9e9130b2089b9d1c60b7daf4e8c370b"
+  }
+}

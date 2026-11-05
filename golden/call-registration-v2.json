@@ -1,0 +1,31 @@
+{
+  "v": 2,
+  "id": "0e5789350c676055bd80ed3e0894625288f350944dcc2377779d2f5b295d3243",
+  "ip": "203.0.113.7",
+  "control_port": 8443,
+  "turn_port": 3478,
+  "sfu_port": 3479,
+  "region": "eu",
+  "version": "0.1.4",
+  "caps": [
+    "stun",
+    "turn",
+    "sfu",
+    "cascade"
+  ],
+  "load": {
+    "allocations": 10,
+    "max_allocations": 1000,
+    "participants": 3,
+    "max_participants": 768,
+    "mbps": 30,
+    "max_mbps": 100,
+    "rooms": 3,
+    "max_rooms": 64,
+    "uplinks": 2,
+    "max_uplinks": 256
+  },
+  "ts": 1800000000,
+  "key": "929032179a209ef46b2f983d54bfc4b49fc09bd9798e4d9319d3207fedffc524",
+  "sig": "9f742438553466e0e54dbfd52539bbf329f4787095fe2286f40c8ac6beeb6021304ba54a2bc0c2357b3a7c950a059b4a87cfc62a6e2f585b649998ace7d3ff08"
+}
