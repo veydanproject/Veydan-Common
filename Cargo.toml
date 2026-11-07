@@ -18,10 +18,9 @@ resolver = "2"
 members = ["crates/veydan-node", "crates/veydan-denied", "crates/registry-proto"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
-# The newest thing used: `is_multiple_of` (1.87)
-rust-version = "1.87"
+rust-version = "1.99"
 publish = false
 authors = ["Veydan Project"]
 # PolyForm Perimeter 1.0.1, as the whole project: LICENSE is a copy of the

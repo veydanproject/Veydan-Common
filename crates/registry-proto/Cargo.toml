@@ -10,6 +10,7 @@ license-file.workspace = true
 
 [dependencies]
 veydan-node = { workspace = true }
+veydan-denied = { workspace = true }
 ring = { workspace = true }
 rustls = { workspace = true }
 serde = { workspace = true }

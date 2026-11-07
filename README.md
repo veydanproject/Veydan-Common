@@ -8,7 +8,7 @@ version is its release, and the services take the crates by that tag.
 |---|---|---|
 | `veydan-node` | who a node is: its id (the hash of its key), pinned TLS to it, h2 streams with one set of windows and pings, a node's own certificate chain, the key that signs, and the envelope of a signed list (the root delegates a list key, the list key signs) | VLink (bridge, client, hub), VCall, VCloud, the app |
 | `veydan-denied` | the keys and the groups denied on every server of the network: the files Veydan Cloud lays on a host, and the one reader every server uses; also a list of keys a server writes itself (the members of a private server) | VPush, VGuard, VCloud |
-| `registry-proto` | what bridges and call nodes say to the registry (registrations, states), the lists the registry signs for the clients, the hubs the root revoked | VLink, VCall, the registry, the app |
+| `registry-proto` | what bridges and call nodes say to the registry (registrations, states), the lists the registry signs for the clients, the hubs the root revoked | VLink, VHub, VCall, VRegistry, the app |
 
 ## Building
 
@@ -29,6 +29,10 @@ In the monorepo every service names the crates by path
 repository turns each of those paths into a dependency on this repository
 by the tag of the version the monorepo holds, so a tag here is published
 before the service that builds on it.
+
+Every change to Common requires a new version in `Cargo.toml` and a new
+Common release. Publish the snapshots of all services and products that use
+Common again after that release, so their dependency tags match the new version.
 
 ## Versions
 

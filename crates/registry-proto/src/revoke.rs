@@ -19,6 +19,7 @@ use ring::signature::{UnparsedPublicKey, ED25519};
 use serde::{Deserialize, Serialize};
 
 use veydan_node::list::{hex, unhex, Delegation, Error};
+use veydan_denied::is_key;
 
 pub const VERSION: u32 = 1;
 /// What is signed is prefixed with what it is, so that a signature made
@@ -68,10 +69,6 @@ pub fn root_key_of_cert(der: &[u8]) -> Result<String, veydan_node::Error> {
         Some(key) if key.len() == 32 => Ok(hex(key)),
         _ => Err(veydan_node::Error::BadCert("the root's key is not Ed25519".into())),
     }
-}
-
-fn is_key(text: &str) -> bool {
-    text.len() == 64 && text.bytes().all(|b| matches!(b, b'0'..=b'9' | b'a'..=b'f'))
 }
 
 impl Revocations {

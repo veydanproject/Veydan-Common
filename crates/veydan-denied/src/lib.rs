@@ -176,9 +176,27 @@ impl DeniedList {
             text.push_str(k);
             text.push('\n');
         }
-        let tmp = path.with_extension("tmp");
-        std::fs::write(&tmp, text)?;
-        std::fs::rename(&tmp, path)?;
+        use std::io::Write;
+        use std::sync::atomic::{AtomicU64, Ordering};
+        static NEXT_TMP: AtomicU64 = AtomicU64::new(0);
+        let (tmp, mut file) = loop {
+            let n = NEXT_TMP.fetch_add(1, Ordering::Relaxed);
+            let tmp = path.with_extension(format!("tmp.{}.{}", std::process::id(), n));
+            match std::fs::OpenOptions::new().write(true).create_new(true).open(&tmp) {
+                Ok(file) => break (tmp, file),
+                Err(e) if e.kind() == std::io::ErrorKind::AlreadyExists => continue,
+                Err(e) => return Err(e),
+            }
+        };
+        let written = (|| {
+            file.write_all(text.as_bytes())?;
+            file.sync_all()?;
+            std::fs::rename(&tmp, path)
+        })();
+        if written.is_err() {
+            let _ = std::fs::remove_file(&tmp);
+        }
+        written?;
         self.refresh();
         Ok(())
     }

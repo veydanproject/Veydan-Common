@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 (2026-11-06): one key validator for revoked hubs
+
+- `registry-proto` uses `veydan-denied::is_key` for revoked hub keys, so
+  the shared key format has one implementation.
+- The workspace's minimum Rust version matches the repository toolchain.
+
 ## 0.1.0 (2026-11-04): the crates the services share, in a folder of their own
 
 - `veydan-node`: what was the general part of `vlink-proto` 0.3.5 — the id
